@@ -1,0 +1,12 @@
+.page {
+  background-color: rgba(243, 243, 243, 1);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.page__content {
+  flex: 1;
+}
