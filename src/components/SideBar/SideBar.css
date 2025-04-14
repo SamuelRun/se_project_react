@@ -1,0 +1,16 @@
+.profile__sidebar {
+  margin-right: 116px;
+}
+
+.sidebar {
+  display: flex;
+  gap: 16px;
+  min-width: 229px;
+}
+
+.sidebar__username {
+  padding: 0;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "Cabinet Grotesk Bold", Arial, sans-serif;
+}
