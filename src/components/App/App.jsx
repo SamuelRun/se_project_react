@@ -10,7 +10,7 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { addItem, deleteItem, getItems } from "../../../scr/utils/api";
+import { addItem, deleteItem, getItems } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -36,6 +36,21 @@ function App() {
     setActiveModal("");
   };
 
+  useEffect(() => {
+    if (!activeModal) return;
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        closeActiveModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
+
   const handleCardClick = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
@@ -47,9 +62,7 @@ function App() {
         setClothingItems(clothingItems.filter((item) => item._id !== _id));
         closeActiveModal();
       })
-      .catch((error) => {
-        console.error(error);
-      });
+      .catch(console.error);
   };
 
   const handleAddItemModalSubmit = ({ _id, name, weather, imageUrl }) => {
@@ -58,9 +71,7 @@ function App() {
         setClothingItems((prevItems) => [res, ...prevItems]);
         closeActiveModal();
       })
-      .catch((error) => {
-        console.error(error);
-      });
+      .catch(console.error);
   };
 
   useEffect(() => {
@@ -102,6 +113,7 @@ function App() {
                 <Profile
                   handleCardClick={handleCardClick}
                   clothingItems={clothingItems}
+                  handleAddClick={handleAddClick}
                 />
               }
             />
