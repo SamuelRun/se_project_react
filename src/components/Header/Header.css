@@ -45,3 +45,28 @@
   text-decoration: none;
   color: black;
 }
+
+.header__avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.sign-up-btn {
+  padding: 0 20px;
+  border: none;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  font-family: "Cabinet Grotesk Bold", Arial, sans-serif;
+  background: transparent;
+}
+
+.log-in-btn {
+  border: none;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  font-family: "Cabinet Grotesk Bold", Arial, sans-serif;
+  background: transparent;
+}

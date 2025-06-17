@@ -14,3 +14,18 @@
   font-weight: 700;
   font-family: "Cabinet Grotesk Bold", Arial, sans-serif;
 }
+
+.sidebar__avatar {
+  height: 56px;
+  width: 56px;
+  border-radius: 50%;
+}
+
+.signout {
+  border: none;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  font-family: "Cabinet Grotesk Bold", Arial, sans-serif;
+  background: transparent;
+}

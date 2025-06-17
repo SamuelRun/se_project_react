@@ -1,13 +1,32 @@
 import "./ItemCard.css";
 
-function ItemCard({ item, onCardClick }) {
+function ItemCard({ item, onCardClick, onCardLike, currentUser }) {
   const handleCardClick = () => {
     onCardClick(item);
   };
 
+  const isLiked = currentUser
+    ? item.likes.some((id) => id === currentUser._id)
+    : null;
+  const handleLike = () => {
+    const id = item._id;
+    onCardLike({ id, isLiked });
+  };
+
+  const itemLikeButtonClassName = isLiked
+    ? "card__like card__like_active"
+    : "card__like";
   return (
     <li className="card">
       <h2 className="card__name">{item.name}</h2>
+      {currentUser ? (
+        <button
+          className={itemLikeButtonClassName}
+          onClick={handleLike}
+        ></button>
+      ) : (
+        <></>
+      )}
       <img
         onClick={handleCardClick}
         className="card__image"

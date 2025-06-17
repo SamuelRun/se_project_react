@@ -1,12 +1,22 @@
 import "./SideBar.css";
-import avatar from "../../assets/avatar.svg";
 
-function SideBar() {
+function SideBar({ currentUser, handleSignOut }) {
   return (
-    <div className="sidebar">
-      <img className="sidebar__avatar" src={avatar} alt="Default avatar" />
-      <p className="sidebar__username">Terrence Tegegne</p>
-    </div>
+    <>
+      <div className="sidebar">
+        <img
+          className="sidebar__avatar"
+          src={currentUser.avatar}
+          alt="Default avatar"
+        />
+        <p className="sidebar__username">{currentUser.name}</p>
+      </div>
+      <div>
+        <button className="signout" type="button" onClick={handleSignOut}>
+          Sign Out
+        </button>
+      </div>
+    </>
   );
 }
 
