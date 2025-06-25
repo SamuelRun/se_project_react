@@ -88,6 +88,7 @@
 .modal__submit {
   margin: 24px 0 0 0;
   max-width: 124px;
+  min-width: 86px;
   min-height: 36px;
   border-radius: 4px;
   border: none;
@@ -106,4 +107,24 @@
 
 .modal__submit:disabled {
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal__switch {
+  margin: 24px 0 0 0;
+  max-width: 124px;
+  min-width: 86px;
+  min-height: 36px;
+  border-radius: 4px;
+  border: none;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  font-family: "Cabinet Grotesk Medium", Arial, sans-serif;
+  padding: 0;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.modal__switch:hover {
+  color: rgba(0, 0, 0, 1);
 }

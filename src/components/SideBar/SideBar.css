@@ -21,6 +21,25 @@
   border-radius: 50%;
 }
 
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-profile {
+  border: none;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  font-family: "Cabinet Grotesk Bold", Arial, sans-serif;
+  background: transparent;
+  margin-top: 24px;
+}
+
+.edit-profile:hover {
+  color: rgba(0, 0, 0, 0.6);
+}
+
 .signout {
   border: none;
   font-size: 20px;
@@ -28,4 +47,9 @@
   font-weight: 700;
   font-family: "Cabinet Grotesk Bold", Arial, sans-serif;
   background: transparent;
+  margin-top: 8px;
+}
+
+.signout:hover {
+  color: rgba(0, 0, 0, 0.6);
 }

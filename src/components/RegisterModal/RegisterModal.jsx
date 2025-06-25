@@ -7,6 +7,7 @@ function RegisterModal({
   isOpen,
   activeModal,
   onRegisterModalSubmit,
+  handleModalSwitch,
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -49,6 +50,8 @@ function RegisterModal({
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      buttonSwitchText={"or Log In"}
+      handleModalSwitch={handleModalSwitch}
     >
       <label htmlFor="email" className="modal__label">
         Email{" "}

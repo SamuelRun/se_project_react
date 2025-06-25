@@ -44,7 +44,7 @@ function AddItemModal({ onClose, isOpen, activeModal, onAddItemModalSubmit }) {
         <input
           type="text"
           className="modal__input"
-          id="name"
+          id="item__name"
           placeholder="Name"
           required
           minLength="1"

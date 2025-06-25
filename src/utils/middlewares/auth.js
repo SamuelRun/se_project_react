@@ -1,8 +1,6 @@
-const baseUrl = "http://localhost:3001";
+import { checkResponse } from "../api";
 
-const checkResponse = (res) => {
-  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-};
+const baseUrl = "http://localhost:3001";
 
 function signUp({ name, avatar, email, password }) {
   return fetch(`${baseUrl}/signup`, {
@@ -24,6 +22,17 @@ function signIn({ email, password }) {
   }).then(checkResponse);
 }
 
+function editProfile(name, avatar, token) {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ name, avatar }),
+  }).then(checkResponse);
+}
+
 const verifyToken = (token) => {
   return fetch(`${baseUrl}/users/me`, {
     method: "GET",
@@ -34,4 +43,4 @@ const verifyToken = (token) => {
   }).then(checkResponse);
 };
 
-export { signUp, signIn, verifyToken };
+export { signUp, signIn, editProfile, verifyToken };

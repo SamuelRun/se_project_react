@@ -18,10 +18,16 @@ import {
   addCardLike,
   removeCardLike,
 } from "../../utils/api";
-import { signUp, signIn, verifyToken } from "../../utils/middlewares/auth";
-import ProtectedRoute from "../../utils/ProtectedRoute";
+import {
+  signUp,
+  signIn,
+  editProfile,
+  verifyToken,
+} from "../../utils/middlewares/auth";
+import ProtectedRoute from "../../components/ProtectedRoute";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -69,6 +75,18 @@ function App() {
 
   const handleLoginModalClick = () => {
     setActiveModal("log-in");
+  };
+
+  const handleEditProfileModalClick = () => {
+    setActiveModal("edit-profile");
+  };
+
+  const handleModalSwitch = () => {
+    if (activeModal === "log-in") {
+      setActiveModal("register");
+    } else if (activeModal === "register") {
+      setActiveModal("log-in");
+    }
   };
 
   const closeActiveModal = () => {
@@ -146,6 +164,16 @@ function App() {
       .catch(console.error);
   };
 
+  const handleEditProfileSubmit = ({ name, avatar }) => {
+    const token = localStorage.getItem("jwt");
+    editProfile(name, avatar, token)
+      .then((user) => {
+        setCurrentUser(user);
+        closeActiveModal();
+      })
+      .catch(console.error);
+  };
+
   const handleCardLike = ({ id, isLiked }) => {
     console.log("onCardLike called with:", { id, isLiked });
     const token = localStorage.getItem("jwt");
@@ -197,6 +225,7 @@ function App() {
               currentUser={currentUser}
               handleRegisterModalClick={handleRegisterModalClick}
               handleLoginModalClick={handleLoginModalClick}
+              handleModalSwitch={handleModalSwitch}
             />
             <Routes>
               <Route
@@ -207,7 +236,6 @@ function App() {
                     handleCardClick={handleCardClick}
                     clothingItems={clothingItems}
                     onCardLike={handleCardLike}
-                    currentUser={currentUser}
                   />
                 }
               />
@@ -220,8 +248,8 @@ function App() {
                       clothingItems={clothingItems}
                       handleAddClick={handleAddClick}
                       onCardLike={handleCardLike}
-                      currentUser={currentUser}
                       handleSignOut={handleSignOut}
+                      handleEditProfileModalClick={handleEditProfileModalClick}
                     />
                   </ProtectedRoute>
                 }
@@ -246,12 +274,20 @@ function App() {
             activeModal={activeModal}
             onClose={closeActiveModal}
             onLoginModalSubmit={handleLoginModalSubmit}
+            handleModalSwitch={handleModalSwitch}
           />
           <RegisterModal
             isOpen={activeModal === "register"}
             activeModal={activeModal}
             onClose={closeActiveModal}
             onRegisterModalSubmit={handleRegisterModalSubmit}
+            handleModalSwitch={handleModalSwitch}
+          />
+          <EditProfileModal
+            isOpen={activeModal === "edit-profile"}
+            activeModal={activeModal}
+            onClose={closeActiveModal}
+            onEditProfileModalSubmit={handleEditProfileSubmit}
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>
