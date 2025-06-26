@@ -39,7 +39,7 @@ function EditProfileModal({
       isOpen={isOpen}
       onSubmit={handleSubmit}
     >
-      <label htmlFor="name" className="modal__label">
+      <label className="modal__label">
         Name{" "}
         <input
           type="text"
@@ -53,7 +53,7 @@ function EditProfileModal({
           value={name}
         />
       </label>
-      <label htmlFor="avatar" className="modal__label">
+      <label className="modal__label">
         Image{" "}
         <input
           type="text"

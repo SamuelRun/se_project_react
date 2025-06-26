@@ -41,7 +41,7 @@ function LoginModal({
       buttonSwitchText={"or Sign Up"}
       handleModalSwitch={handleModalSwitch}
     >
-      <label htmlFor="email" className="modal__label">
+      <label className="modal__label">
         Email{" "}
         <input
           type="email"
@@ -55,7 +55,7 @@ function LoginModal({
           value={email}
         />
       </label>
-      <label htmlFor="password" className="modal__label">
+      <label className="modal__label">
         Password{" "}
         <input
           type="password"

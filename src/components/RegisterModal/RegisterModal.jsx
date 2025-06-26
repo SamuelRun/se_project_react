@@ -53,7 +53,7 @@ function RegisterModal({
       buttonSwitchText={"or Log In"}
       handleModalSwitch={handleModalSwitch}
     >
-      <label htmlFor="email" className="modal__label">
+      <label className="modal__label">
         Email{" "}
         <input
           type="email"
@@ -67,7 +67,7 @@ function RegisterModal({
           value={email}
         />
       </label>
-      <label htmlFor="password" className="modal__label">
+      <label className="modal__label">
         Password{" "}
         <input
           type="password"
@@ -81,7 +81,7 @@ function RegisterModal({
           value={password}
         />
       </label>
-      <label htmlFor="name" className="modal__label">
+      <label className="modal__label">
         Name{" "}
         <input
           type="text"
@@ -95,7 +95,7 @@ function RegisterModal({
           value={name}
         />
       </label>
-      <label htmlFor="avatar" className="modal__label">
+      <label className="modal__label">
         Image{" "}
         <input
           type="text"
